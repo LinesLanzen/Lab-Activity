@@ -1,0 +1,31 @@
+﻿@model List<Lab_Activity.Models.Instructor> // Adjust the namespace as needed
+
+<h2>Instructors</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Is Tenured</th>
+            <th>Rank</th>
+            <th>Hiring Date</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.Id</td>
+                <td>@instructor.FirstName</td>
+                <td>@instructor.LastName</td>
+                <td>@(instructor.IsTenured ? "Permanent" : "Probitionary")</td>
+                <td>@instructor.Rank</td>
+                <td>@instructor.HiringDate.ToShortDateString()</td>
+                <td>@Html.ActionLink("Details", "ShowDetails", new { id = instructor.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>
